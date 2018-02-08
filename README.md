@@ -64,6 +64,74 @@ echo "I: Launch the app...."
 /app/main -port 7081
 ```
 
+## Production Deployment
+
+### Create DB and load the schema
+
+Install mysql and codereate a  database
+
+e.g.
+```
+dbname: catalogue
+user: devops
+password: GKkdw72Jil0ld
+
+```
+
+Upload the schema to database created above.
+
+path to schema :  **data/dump.sql**
+
+### Deploy static  assets
+
+  * Fetch the latest [release artifact from this URL](https://github.com/udbc/catalogue/releases)
+
+  * Extract the artifact, and copy images directory
+
+e.g.
+```
+cd catalogue-1.0.1
+cp -r  images  /images
+```
+
+
+### Deploy the Catalogue App
+
+Create releases directory
+
+```
+mkdir /opt/apps/catalogue/releases
+
+```
+Download the [release artifact from this page](http://165.227.64.79:8080/)
+
+e.g.
+
+```
+cd  /opt/apps/catalogue/releases
+
+wget -c http://165.227.64.79:8080/catalogue
+```
+
+
+where **catalogue** is a binary
+
+create a symlink
+```
+ln -s mkdir /opt/apps/catalogue/releases/catalogue /opt/catalogue
+
+```
+
+Launch the app
+```
+/opt/catalogue -port 80 -images=/images/ -DSN 'dbuser:password@tcp(localhost:3306)/databasename'
+```
+
+e.g.
+```
+/opt/apps/catalogue -port 7081 -images=/images/ -DSN 'devops:GKkdw72Jil0ld@tcp(localhost:3306)/catalogue'
+
+```
 
 ### API Spec
 
