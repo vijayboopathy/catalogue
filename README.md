@@ -85,11 +85,16 @@ path to schema :  **data/dump.sql**
 ### Deploy static  assets
 
   * Fetch the latest [release artifact from this URL](https://github.com/udbc/catalogue/releases)
+e.g.
+```
+wget -c https://github.com/udbc/catalogue/archive/1.0.1.tar.gz
 
+```
   * Extract the artifact, and copy images directory
 
 e.g.
 ```
+tar -xzf 1.0.1.tar.gz
 cd catalogue-1.0.1
 cp -r  images  /images
 ```
@@ -129,7 +134,7 @@ Launch the app
 
 e.g.
 ```
-/opt/apps/catalogue -port 7081 -images=/images/ -DSN 'devops:GKkdw72Jil0ld@tcp(localhost:3306)/catalogue'
+/opt/apps/catalogue -port 80 -images=/images/ -DSN 'devops:GKkdw72Jil0ld@tcp(localhost:3306)/catalogue'
 
 ```
 
