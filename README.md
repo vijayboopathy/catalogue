@@ -108,14 +108,14 @@ Create releases directory
 mkdir /opt/apps/catalogue/releases
 
 ```
-Download the [release artifact from this page](http://165.227.64.79:8080/)
+Download the [release artifact from this page](https://s3.amazonaws.com/sod-openedx/catalogue/catalogue)
 
 e.g.
 
 ```
 cd  /opt/apps/catalogue/releases
 
-wget -c http://165.227.64.79:8080/catalogue
+wget -c https://s3.amazonaws.com/sod-openedx/catalogue/catalogue
 ```
 
 
@@ -123,18 +123,18 @@ where **catalogue** is a binary
 
 create a symlink
 ```
-ln -s mkdir /opt/apps/catalogue/releases/catalogue /opt/catalogue
+ln -s /opt/apps/catalogue/releases/catalogue /opt/
 
 ```
 
 Launch the app
 ```
-/opt/catalogue -port 80 -images=/images/ -DSN 'dbuser:password@tcp(localhost:3306)/databasename'
+/opt/catalogue -port 7081 -images=/images/ -DSN 'dbuser:password@tcp(localhost:3306)/databasename'
 ```
 
 e.g.
 ```
-/opt/apps/catalogue -port 80 -images=/images/ -DSN 'devops:GKkdw72Jil0ld@tcp(localhost:3306)/catalogue'
+/opt/catalogue -port 7081 -images=/images/ -DSN 'devops:GKkdw72Jil0ld@tcp(localhost:3306)/catalogue'
 
 ```
 
